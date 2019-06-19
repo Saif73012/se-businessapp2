@@ -27,7 +27,7 @@ import com.businessapp.logic.LoggerProvider;
 import com.businessapp.repositories.ArticleRepositoryIntf;
 import com.businessapp.repositories.CustomerRepositoryIntf;
 import com.businessapp.repositories.RepositoryBuilder;
-
+import com.businessapp.repositories.BorrowRepositoryIntf;
 
 /**
  * Public singleton builder for JavaFX Gui.
@@ -47,6 +47,7 @@ public class FXBuilder extends Application implements ManagedComponentIntf {
 		{ "App",					"App",			"App.fxml",			"0" },
 		{ CalculatorIntf.Calculator,"Calculator",	"Calculator.fxml",	"0" },
 		{ RepositoryBuilder.Customer,	"Customers",	"TableView.fxml",	"1" },
+		{RepositoryBuilder.Borrow,		"Borrow",		"TableView.fxml",	"1"	},
 		{ RepositoryBuilder.Article,		"Artikel",		"TableView.fxml",	"0" },
 	};
 
@@ -257,6 +258,16 @@ public class FXBuilder extends Application implements ManagedComponentIntf {
 							calcFxmlController.inject( calcLogic );
 							calcLogic.start();
 							calcFxmlController.start();
+							break;
+							
+						case RepositoryBuilder.Borrow:
+							tvFxmlController = (TableViewFXMLController)fxmlController;
+							BorrowRepositoryIntf borrowRepo = RepositoryBuilder.getInstance().getBorrowRepository();
+							tvFxmlController.inject( "1".equals( descr[ Idx.i_rszTble.ordinal() ] ) ); 	// isResizable feature
+							tv = TableViewable.createTableView_Borrow( tvFxmlController, borrowRepo );
+							tvFxmlController.inject( tv );
+							tvFxmlController.start();
+							tv.start();
 							break;
 
 						}

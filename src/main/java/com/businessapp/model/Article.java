@@ -1,6 +1,8 @@
 package com.businessapp.model;
 
 import com.businessapp.logic.IDGenerator;
+import com.businessapp.model.Room.CleanStatus;
+import com.businessapp.model.Room.RoomStatus;
 
 
 /**
@@ -19,20 +21,30 @@ public class Article implements EntityIntf {
 
 	private String name;		// Article name.
 
-	private String price;		// Article price.
-
+	private long price;		// Article price.
+	public enum RoomStatus { AVAILABLE, SUSPENDED, TERMINATED, LOAN };
+	//
+	private RoomStatus status;
+	
+	public enum CleanStatus{CLEAN,DIRTY};
+	private CleanStatus statusc;
+	
 	/**
 	 * Private default constructor (required by JSON deserialization).
 	 */
 	@SuppressWarnings("unused")
-	private Article() { this( null, null, null ); }
+	private Article() { this( null, null, (long)0 ); }
 
 	/**
 	 * Public constructor.
 	 * @param name Article name.
 	 */
-	public Article( String name, String price ) {
-		this( null, name, price );
+	
+	public Article( String name, long  price ) {
+		this( null, name,price);
+		
+ 
+		
 	}
 
 	/**
@@ -42,10 +54,28 @@ public class Article implements EntityIntf {
 	 */
 	private static final IDGenerator IDG = new IDGenerator( null, IDGenerator.IDTYPE.NUM, 8 );
 	//
-	public Article( String id, String name, String price ) {
+	public Article( String id, String name, long price ) {
 		this.id = id==null? IDG.nextId() : id;
 		this.name = name;
 		setPrice( price );
+	}
+	
+	public Article(String id, String name, long price,RoomStatus status) 
+	{
+		this.id = id==null? IDG.nextId() : id;
+		this.name = name;
+		setPrice( price );
+		this.status=status;
+		
+	}
+	public Article(String id, String name, long price,RoomStatus status,CleanStatus statusc) 
+	{
+		this.id = id==null? IDG.nextId() : id;
+		this.name = name;
+		setPrice( price );
+		this.status=status;
+		this.statusc=statusc;
+		
 	}
 
 
@@ -82,15 +112,18 @@ public class Article implements EntityIntf {
 	 * @return Article price.
 	 */
 	public String getPrice() {
-		return price;
+		return Long.toString(price);
 	}
 
 	/**
 	 * Set Article price.
 	 * @param name Article price.
 	 */
-	public void setPrice( String price ) {
+	public void setPrice( long price ) {
 		this.price = price;
+	}
+	public void clean() {
+		this.statusc =CleanStatus.CLEAN;
 	}
 
 }

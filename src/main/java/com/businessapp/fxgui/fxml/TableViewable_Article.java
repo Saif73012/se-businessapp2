@@ -127,7 +127,7 @@ class TableViewable_Article extends TableViewable {
 					break;
 
 				case price:
-					entity.setPrice( val );
+					entity.setPrice( Long.parseLong(val) );
 					break;
 
 				default:
@@ -164,14 +164,23 @@ class TableViewable_Article extends TableViewable {
 		switch( Col.valueOf( getColName( col ) ) ) {
 		case id:	return entity.getId();
 		case name:	return entity.getName();
-		case price:	return entity.getPrice();
+		case price:	return addChar(entity.getPrice(),',',entity.getPrice().length()-2)+" EUR";
 		default:	return "-";
 		}
 	}
+	
+	public String addChar(String s, char c,int pos) 
+	{
+		StringBuilder sb= new StringBuilder(s);
+		sb.insert(pos, c);
+		return sb.toString();
+	}
+
 
 	@Override
 	public String getCellValue( int col ) {
 		return getCellValueAsString( col );
+
 	}
 
 	@Override

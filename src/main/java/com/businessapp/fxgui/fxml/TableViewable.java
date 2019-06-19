@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.businessapp.logic.ManagedComponentIntf;
 import com.businessapp.repositories.ArticleRepositoryIntf;
+import com.businessapp.repositories.BorrowRepositoryIntf;
 import com.businessapp.repositories.CustomerRepositoryIntf;
 
 
@@ -30,6 +31,12 @@ public abstract class TableViewable implements ManagedComponentIntf {
 			TableViewFXMLController tvFxmlController, ArticleRepositoryIntf repository )
 	{
 		return new TableViewable_Article( tvFxmlController, repository );
+	}
+	
+	public static TableViewable createTableView_Borrow(
+			TableViewFXMLController tvFxmlController, BorrowRepositoryIntf repository )
+	{
+		return new TableViewable_Borrow( tvFxmlController, repository );
 	}
 
 	abstract Object[][] getColDescr();

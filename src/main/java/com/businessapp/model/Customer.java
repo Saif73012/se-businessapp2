@@ -34,20 +34,23 @@ public class Customer implements EntityIntf {
 	public enum CustomerStatus { ACTIVE, SUSPENDED, TERMINATED };
 	//
 	private CustomerStatus status;
+	
+	// Customer nachname
+	private String nachname;
 
 
 	/**
 	 * Private default constructor (required by JSON deserialization).
 	 */
 	@SuppressWarnings("unused")
-	private Customer() { this( null ); }
+	private Customer() { this( null, null ); }
 
 	/**
 	 * Public constructor.
 	 * @param name Customer name.
 	 */
-	public Customer( String name ) {
-		this( null, name );
+	public Customer( String name, String nachname ) {
+		this( null, name, nachname );
 	}
 
 	/**
@@ -57,9 +60,10 @@ public class Customer implements EntityIntf {
 	 */
 	private static final IDGenerator IDG = new IDGenerator( "C.", IDGenerator.IDTYPE.AIRLINE, 6 );
 	//
-	public Customer( String id, String name ) {
+	public Customer( String id, String name, String nachname ) {
 		this.id = id==null? IDG.nextId() : id;
 		this.name = name;
+		this.nachname = nachname;
 		this.notes.add( new Note( "Customer record created." ) );
 		this.status = CustomerStatus.ACTIVE;
 	}
@@ -83,6 +87,20 @@ public class Customer implements EntityIntf {
 	 */
 	public String getName() {
 		return name;
+	}
+	/**
+	 * Return Customer nachname.
+	 * @return Customer nachname.
+	 */
+	public String getNachname() {
+		return nachname;
+	}
+	/**
+	 * Set Customer nachname.
+	 * @param nachname
+	 */
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
 	}
 
 	/**

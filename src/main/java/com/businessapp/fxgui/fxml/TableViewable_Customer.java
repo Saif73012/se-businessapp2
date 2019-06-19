@@ -36,12 +36,13 @@ class TableViewable_Customer extends TableViewable {
 	private static final String cssPrefix = "tableview-customer";
 
 	// Enumerate Customer columns in Tableview.
-	private enum Col { id, name, status, notes, contact };
+	private enum Col { id, name, nachname,status, notes, contact };
 
 	private static final String[][] _colDescr = {
 		// i_col=0,			i_label=1,	i_css=2,				i_visble=3, i_edble=4
 		{ Col.id.name(),	"Kund.-Nr.",cssPrefix + "-column-id",		"1", "0" },
 		{ Col.name.name(),	"Name",		cssPrefix + "-column-name",		"1", "1" },
+		{ Col.nachname.name(),	"Nachname",	cssPrefix + "-column-nachname",	"1", "1" },
 		{ Col.status.name(),"Status",	cssPrefix + "-column-status",	"1", "1" },
 		{ Col.notes.name(),	"Anmerk.",	cssPrefix + "-column-notes",	"0", "0" },
 		{ Col.contact.name(),"Kontakt",	cssPrefix + "-column-contacts",	"1", "1" },
@@ -102,6 +103,12 @@ class TableViewable_Customer extends TableViewable {
 	public String getName() {
 		return this.getClass().getSimpleName();
 	}
+	public String getNachname() 
+	{
+		return this.getClass().getSimpleName();
+	}
+	
+	
 
 	private void reload() {
 		tvItemsList.clear();
@@ -141,6 +148,9 @@ class TableViewable_Customer extends TableViewable {
 
 				case name:
 					entity.setName( val );
+					break;
+				case nachname:
+					entity.setNachname( val );
 					break;
 
 				case status:
@@ -198,6 +208,7 @@ class TableViewable_Customer extends TableViewable {
 		switch( Col.valueOf( getColName( col ) ) ) {
 		case id:	return entity.getId();
 		case name:	return entity.getName();
+		case nachname: return entity.getNachname();
 		case status:
 			CustomerStatus st = entity.getStatus();
 			switch( st ) {
