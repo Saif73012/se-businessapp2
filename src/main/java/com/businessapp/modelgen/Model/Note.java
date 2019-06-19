@@ -37,16 +37,16 @@ public class Note implements Serializable {
      */
     public void getNoteText() {
         // TODO implement here
-        return null;
+//        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void setNoteText(void String) {
+    public void setNoteText(String text) {
         // TODO implement here
-        return null;
+//        return text;
     }
 
     /**
