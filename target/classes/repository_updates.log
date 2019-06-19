@@ -215,3 +215,6 @@
 2019-06-14 16:42:02,422  INFO  GenericMemRepositoryImpl:==> updated(C.XANQTD)
 2019-06-14 17:05:46,844  INFO  GenericMemRepositoryImpl:==> updated(C.XWVL6P)
 2019-06-14 17:05:52,655  INFO  GenericMemRepositoryImpl:==> deleted(C.XWVL6P)
+2019-06-14 17:07:06,005  INFO  GenericMemRepositoryImpl:ArticleRepositoryImpl stopped.
+2019-06-14 17:07:06,006  INFO  GenericMemRepositoryImpl:CustomerRepositoryImpl stopped.
+2019-06-14 17:07:06,007  INFO  GenericMemRepositoryImpl:BorrowRepositoryImpl stopped.

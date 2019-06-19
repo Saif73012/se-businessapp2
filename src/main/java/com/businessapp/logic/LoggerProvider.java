@@ -30,12 +30,15 @@ public class LoggerProvider implements ManagedComponentIntf {
 			//configureJavaUtilLogger( java.util.logging.Logger.getLogger( clazz.getName() ) );
 			//org.slf4j.LoggerFactory.getLogger( clazz );
 			org.apache.log4j.Logger.getLogger( clazz );
+//<<<<<<< HEAD
 //		
 //		SimpleLayout layout=new SimpleLayout();
 //		ConsoleAppender consoleAppender=new ConsoleAppender(layout);
 //		this.realLogger.addAppender(consoleAppender);
 //		//ALL|DEBUG|INFO|WARN|ERROR|FATAL|OFF:
 //		this.realLogger.setLevel(Level.ALL);
+//=======
+//>>>>>>> f6e775eb7bd363cbfa2eb6d71cca13d9ed7ab063
 	}
 
 
@@ -80,17 +83,29 @@ public class LoggerProvider implements ManagedComponentIntf {
 	 */
 	public void info( String message ) {
 		realLogger.info( message );
+//<<<<<<< HEAD
 //		realLogger.log( java.util.logging.Level.INFO, message );
+//=======
+		//realLogger.log( java.util.logging.Level.INFO, message );
+//>>>>>>> f6e775eb7bd363cbfa2eb6d71cca13d9ed7ab063
 	}
 
 	public void warn( String message ) {
 		realLogger.warn( message );
+//<<<<<<< HEAD
 //		realLogger.log( java.util.logging.Level.WARNING, message );
+//=======
+		//realLogger.log( java.util.logging.Level.WARNING, message );
+//>>>>>>> f6e775eb7bd363cbfa2eb6d71cca13d9ed7ab063
 	}
 
 	public void error( String message, Exception e ) {
 		realLogger.error( message );
+//<<<<<<< HEAD
 //		realLogger.log( java.util.logging.Level.SEVERE, message );
+//=======
+		//realLogger.log( java.util.logging.Level.SEVERE, message );
+//>>>>>>> f6e775eb7bd363cbfa2eb6d71cca13d9ed7ab063
 	}
 
 
